@@ -4,6 +4,12 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"time"
+)
+
+const (
+	TimeLayout      = "15:04:05.000"
+	StartTimeLayout = "15:04:05"
 )
 
 // Config - структура для хранения переменных конфигурации
@@ -28,6 +34,16 @@ func LoadConfig(path string) (*Config, error) {
 	err = json.NewDecoder(file).Decode(&config)
 	if err != nil {
 		return nil, fmt.Errorf("ошибка чтения config файла: %v", err)
+	}
+
+	_, err = time.Parse(StartTimeLayout, config.Start)
+	if err != nil {
+		panic(fmt.Sprintf("некорректный формат запланированного времени старта первого участника %s: %v\n", config.Start, err))
+	}
+
+	_, err = time.Parse(StartTimeLayout, config.StartDelta)
+	if err != nil {
+		panic(fmt.Sprintf("некорректный формат интервала между стартами участников %s: %v\n", config.StartDelta, err))
 	}
 
 	return &config, nil
