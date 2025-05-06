@@ -3,6 +3,6 @@
   "lapLen": 3651,
   "penaltyLen": 50,
   "firingLines": 1,
-  "start": "09:30:00",
+  "start": "09:30:00.000",
   "startDelta": "00:00:30"
 }

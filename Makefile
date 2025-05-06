@@ -8,3 +8,7 @@ build:
 
 .PHONY: start
 start: build run
+
+.PHONY: test
+test:
+	go test -count=1 ./... -v

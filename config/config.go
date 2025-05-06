@@ -44,7 +44,7 @@ func LoadConfig(path string) (*Config, error) {
 		return nil, fmt.Errorf("ошибка чтения config файла: %v", err)
 	}
 
-	_, err = time.Parse(StartTimeLayout, config.Start)
+	_, err = time.Parse(TimeLayout, config.Start)
 	if err != nil {
 		panic(fmt.Sprintf("некорректный формат запланированного времени старта первого участника %s: %v\n", config.Start, err))
 	}

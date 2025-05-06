@@ -19,6 +19,7 @@ func PrintReport(config *config.Config, file *os.File) error {
 
 	sortCompetitors(competitors)
 
+	fmt.Println("\nОтчет:")
 	for _, comp := range *competitors {
 		if comp.Registered {
 			fmt.Println(comp.String(config))
